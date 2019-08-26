@@ -1,0 +1,11 @@
+getSNRN<-function(name,cohort,whichN,ThisIC.nc){
+  if(whichN=="RN"){
+    thisVarName<-paste(str_trim(name,side="both"),cohort,"_ResN",sep="")
+  }else{
+    thisVarName<-paste(str_trim(name,side="both"),cohort,"_StructN",sep="")
+  }
+  xx<-ncvar_get(ThisIC.nc,thisVarName)
+  if(length(dim(xx))==3){xx<-xx[,,1]}
+  thisN<-nonZeroMean(xx)
+  return(thisN)
+}

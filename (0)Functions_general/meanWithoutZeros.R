@@ -1,0 +1,11 @@
+meanWithoutZeros<-function(x){
+  newX<-x[!is.na(x)]
+  if(length(newX)>0){
+    index<-newX==0
+    nonZeroX<-newX[!index]
+    nzmean<-mean(nonZeroX)
+  }else{
+    nzmean<-NA
+  }
+  return(nzmean)
+}
